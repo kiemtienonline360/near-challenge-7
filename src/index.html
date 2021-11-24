@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./assets/favicon.ico" />
+  <link rel="apple-touch-icon" href="./assets/favicon.ico" />
+  <title>NEAR Popularity Contest</title>
+  <link rel="stylesheet" href="global.css">
+</head>
+
+<body>
+  <main id="signed-out-flow" style="display: none">
+    <div class="header">🤩</div>
+    <h1><strong>NEAR Popularity Contest</strong>!</h1>
+    <h1 data-behavior="greeting"></h1>
+    <p>
+      Sign in to <strong>register and vote</strong> on the <strong>most popular NEAR user</strong>! 😉
+    </p>
+    <p style="text-align: center; margin-top: 2.5em">
+      <button id="sign-in-button">Sign in</button>
+    </p>
+  </main>
+
+  <div id="signed-in-flow" style="display: none">
+    <button class="link" style="float: right" id="sign-out-button">
+      Sign out
+    </button>
+    <main>
+      <h1>
+        🤩
+        <strong data-behavior="account-id" class="accountId"></strong>
+      </h1>
+      <div id="new-user">
+        <h1 style="margin: 0;">Pick an Avatar!</h1>
+        <form>
+          <fieldset id="fieldset">
+            <div class="avatar-select">
+              <a id="refresh-avatar" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24">
+                  <path
+                    d="M9 12l-4.463 4.969-4.537-4.969h3c0-4.97 4.03-9 9-9 2.395 0 4.565.942 6.179 2.468l-2.004 2.231c-1.081-1.05-2.553-1.699-4.175-1.699-3.309 0-6 2.691-6 6h3zm10.463-4.969l-4.463 4.969h3c0 3.309-2.691 6-6 6-1.623 0-3.094-.65-4.175-1.699l-2.004 2.231c1.613 1.526 3.784 2.468 6.179 2.468 4.97 0 9-4.03 9-9h3l-4.537-4.969z" />
+                </svg></a>
+              <img id="avatar-container"></img>
+            </div>
+            <input type="hidden" autocomplete="off" id="greeting" />
+            <input type="text" autocomplete="off" id="name" placeholder="Enter your Name!"
+              style="margin-bottom: 1rem;" />
+            <div style="display: flex; justify-content: center;">
+              <input type="number" autocomplete="off" id="donation" placeholder="0 - Donation (optional)" />
+              <button>Register</button>
+            </div>
+          </fieldset>
+        </form>
+        <p style="color: #aaa;">
+          Find an <strong style="color: #ddd;">avatar</strong> you like, enter your <strong
+            style="color: #ddd;">name</strong> and press <strong style="color: #ddd;">register</strong>!
+        </p>
+        <p style="color: #dc3545; font-size: 0.7rem;"><strong>Warning!</strong> You won't be able to change your avatar
+          and name!</p>
+        <hr>
+      </div>
+
+      <h1>🥰 Leaderboard! 🥰</h1>
+      <ul class="user-list"></ul>
+    </main>
+  </div>
+
+  <aside data-behavior="notification" style="display: none">
+    <a target="_blank" href="https://explorer.testnet.near.org/accounts/"></a>
+    called method: 'addMessage' in contract:
+    <a target="_blank" href="https://explorer.testnet.near.org/accounts/"></a>
+    <footer>
+      <div>✔ Succeeded</div>
+      <div>Just now</div>
+    </footer>
+  </aside>
+
+  <script src="./index.js"></script>
+</body>
+
+</html>
