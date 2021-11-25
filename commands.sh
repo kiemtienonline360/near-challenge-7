@@ -1,15 +1,86 @@
-near deploy --wasmFile main.wasm --accountId near-martin-5.testnet
+near view near-challenge-7.testnet viewCandidates 
 
-near call mt-near-challenge-5.testnet new_default_meta '{"owner_id": "'mt-near-challenge-5.testnet'"}' --accountId mt-near-challenge-5.testnet
+near call near-challenge-7.testnet addCandidate '{ "name": "Trump" }' --accountId martint.testnet --gas 300000000000000
 
-near view mt-near-challenge-5.testnet nft_metadata
+near call near-challenge-7.testnet addCandidate '{ "name": "Putin" }' --accountId martint.testnet --gas 300000000000000
 
-near call mt-near-challenge-5.testnet nft_mint '{"token_id": "mt-5.testnet", "receiver_id": "'mt-near-challenge-5.testnet'", "token_metadata": { "title": "Olympus Mons", "description": "Tallest mountain in charted solar system", "media": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Olympus_Mons_alt.jpg/1024px-Olympus_Mons_alt.jpg", "copies": 1}}' --accountId mt-near-challenge-5.testnet --deposit 10
+near call near-challenge-7.testnet addCandidate '{ "name": "Cat from NEAR" }' --accountId martint.testnet --gas 300000000000000
 
-near view mt-near-challenge-5.testnet nft_metadata
+near view near-challenge-7.testnet viewCandidates 
 
-near create-account alice.mt-near-challenge-5.testnet --masterAccount mt-near-challenge-5.testnet --initialBalance 10
+near view near-challenge-7.testnet viewVotes 
 
-near view mt-near-challenge-5.testnet nft_tokens_for_owner '{"account_id": "'alice.mt-near-challenge-5.testnet'"}'
+near call near-challenge-7.testnet vote '{ "candidateId": "2" }' --accountId martint.testnet --gas 300000000000000
 
-near call mt-near-challenge-5.testnet nft_transfer '{"token_id": "0", "receiver_id": "alice.'mt-near-challenge-5.testnet'", "memo": "transfer ownership"}' --accountId mt-near-challenge-5.testnet --deposit 0.000000000000000000000001
+near view near-challenge-7.testnet viewCandidates 
+
+near view near-challenge-7.testnet viewVotes 
+
+near call near-challenge-7.testnet vote '{ "candidateId": "0" }' --accountId martint.testnet --gas 300000000000000
+
+near view near-challenge-7.testnet viewCandidates 
+
+near view near-challenge-7.testnet viewVotes 
+
+near call near-challenge-7.testnet addCandidate '{ "name": "Nobody" }' --accountId martint.testnet --gas 300000000000000
+
+near view near-challenge-7.testnet viewCandidates 
+
+near call near-challenge-7.testnet removeCandidate '{ "candidateId": "3" }' --accountId martint.testnet --gas 300000000000000
+
+near view near-challenge-7.testnet viewCandidates 
+
+near view near-challenge-7.testnet viewVotes 
+
+near call near-challenge-7.testnet removeVote --accountId martint.testnet --gas 300000000000000
+
+near view near-challenge-7.testnet viewCandidates 
+
+near view near-challenge-7.testnet viewVotes 
+
+near call near-challenge-7.testnet removeVote --accountId martint.testnet --gas 300000000000000
+
+near call near-challenge-7.testnet addCandidateTrumpMode '{ "name": "Trump" }' --accountId martint.testnet --gas 300000000000000
+
+near call near-challenge-7.testnet addCandidateTrumpMode '{ "name": "Trump Junior" }' --accountId martint.testnet --gas 300000000000000
+
+near view near-challenge-7.testnet viewCandidates 
+
+near call near-challenge-7.testnet addCandidateHitlerMode '{ "name": "Hitler" }' --accountId martint.testnet --gas 300000000000000
+
+near call near-challenge-7.testnet addCandidate '{ "name": "Somebody" }' --accountId martint.testnet --gas 300000000000000
+near call near-challenge-7.testnet removeCandidate '{ "candidateId": "5" }' --accountId martint.testnet --gas 300000000000000
+
+near view near-challenge-7.testnet viewCandidates 
+
+near call near-challenge-7.testnet askCatToReviveCandidate '{ "candidateId": "5" }' --accountId martint.testnet --gas 300000000000000
+near call near-challenge-7.testnet askCatToReviveCandidate '{ "candidateId": "5" }' --accountId martint.testnet --gas 300000000000000
+near call near-challenge-7.testnet askCatToReviveCandidate '{ "candidateId": "5" }' --accountId martint.testnet --gas 300000000000000
+near call near-challenge-7.testnet askCatToReviveCandidate '{ "candidateId": "5" }' --accountId martint.testnet --gas 300000000000000
+near call near-challenge-7.testnet askCatToReviveCandidate '{ "candidateId": "5" }' --accountId martint.testnet --gas 300000000000000
+
+near view near-challenge-7.testnet viewCandidates 
+
+near view near-challenge-7.testnet viewVotes 
+
+near call near-challenge-7.testnet vote360NoScopeMode --accountId spiritdungeons.testnet --gas 300000000000000
+
+near view near-challenge-7.testnet viewCandidates 
+
+near view near-challenge-7.testnet viewVotes 
+
+near call near-challenge-7.testnet vote360NoScopeMode --accountId spiritdungeons.testnet --gas 300000000000000
+
+near view near-challenge-7.testnet viewCandidates 
+
+near view near-challenge-7.testnet viewVotes 
+
+near view near-challenge-7.testnet getLeadingCandidate 
+
+near call near-challenge-7.testnet startNewElection --accountId martint.testnet --gas 300000000000000
+
+near view near-challenge-7.testnet viewCandidates 
+
+near view near-challenge-7.testnet viewVotes 
+
+near view near-challenge-7.testnet viewLogs
