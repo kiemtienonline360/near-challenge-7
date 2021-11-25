@@ -115,7 +115,6 @@ export function vote(candidateId: string): CallResponse {
 			"No, no, you can't :p",
 		], false);
 	}
-
 }
 
 export function viewCandidates(): MapEntry<number, Candidate>[] {
