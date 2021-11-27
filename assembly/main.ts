@@ -8,12 +8,10 @@ import {
 
 @nearBindgen
 class Candidate {
-	avatar: u64;
 	voteCount: number;
 	alive: boolean;
 
-	constructor(public name: string) {
-		this.avatar = context.blockIndex;
+	constructor(public name: string, public avatar: string) {
 		this.voteCount = 0;
 		this.alive = true;
 	}
@@ -75,14 +73,14 @@ function log(message: string): void {
 	));
 }
 
-export function addCandidate(name: string): CallResponse {
-	const candidate = new Candidate(name);
+export function addCandidate(name: string, avatar: string): CallResponse {
+	const candidate = new Candidate(name, avatar);
 
 	candidates.set(candidates.length, candidate);
 
 	log('Added candidate ' + candidate.name);
 
-	return response([candidate.name + ' successfully added to candidate list!'], true);
+	return response([candidate.name + ' successfully added!'], true);
 }
 
 export function vote(candidateId: string): CallResponse {
@@ -145,7 +143,7 @@ export function removeCandidate(candidateId: string): CallResponse {
 
 	log('Removed candidate ' + candidate.name);
 
-	return response([candidate.name + ' removed from election!'], true);
+	return response([candidate.name + ' "removed" from election!'], true);
 }
 
 export function removeVote(): CallResponse {
@@ -176,8 +174,8 @@ export function removeVote(): CallResponse {
 	}
 }
 
-export function addCandidateTrumpMode(name: string): CallResponse {
-	const candidate = new Candidate(name);
+export function addCandidateTrumpMode(name: string, avatar: string): CallResponse {
+	const candidate = new Candidate(name, avatar);
 
 	candidate.voteCount = randomNumber(100, 10000);
 	
@@ -186,9 +184,31 @@ export function addCandidateTrumpMode(name: string): CallResponse {
 	log("Added candidate " + candidate.name + " in Trump mode with " + candidate.voteCount.toString() + " votes");
 
 	return response([
-		candidate.name + ' successfully added to candidate list!',
+		candidate.name + ' successfully added!',
 		'...',
 		'Crowd roars! ' + candidate.name + ' gets ' + candidate.voteCount.toString() + ' votes!',
+	], true);
+}
+
+export function addCandidateSantaMode(name: string, avatar: string): CallResponse {
+	const candidate = new Candidate(name, avatar);
+
+	const candidateEntries = candidates.entries();
+
+	for (let i = 0; i < candidateEntries.length; i += 1) {
+		candidateEntries[i].value.voteCount += randomNumber(9000, 10000);
+		candidates.set(candidateEntries[i].key, candidateEntries[i].value);
+	}
+
+	candidate.voteCount += randomNumber(9000, 10000);
+	candidates.set(candidates.length, candidate);
+
+	log("Added candidate " + candidate.name + " in Santa mode");
+
+	return response([
+		candidate.name + ' successfully added!',
+		'Ho, Ho, Ho!',
+		'Everyone gets 9000+ votes!',
 	], true);
 }
 
@@ -223,14 +243,14 @@ export function askCatToReviveCandidate(candidateId: string): CallResponse {
 		log("Made Cat revive " + candidate.name);
 
 		return response([
-			"I'm a merciful god and your wish has been granted!",
+			"Cat's a merciful god and your wish has been granted!",
 			candidate.name + ' lives again!',
 		], true);
 	} else {
 		log("Was rejected by Cat to revive " + candidate.name);
 
 		return response([
-			"Not in a mood now!",
+			"Cat's not in a mood right now!",
 			'Try again later ;)',
 		], false);
 	}
@@ -290,7 +310,7 @@ export function vote360NoScopeMode(): CallResponse {
 
 export function getLeadingCandidate(): CallResponse {
 	let totalNumberOfVotes = 0;
-	let leadingCandidate = new Candidate('Nobody');
+	let leadingCandidate = new Candidate('Nobody', randomNumber(0, 1000000).toString());
 	let leadingCandidateVoteCount = -1;
 	const candidateEntries = candidates.entries();
 
@@ -317,7 +337,7 @@ export function getLeadingCandidate(): CallResponse {
 
 export function startNewElection(): CallResponse {
 	let totalNumberOfVotes = 0;
-	let leadingCandidate = new Candidate('Nobody');
+	let leadingCandidate = new Candidate('Nobody', randomNumber(0, 1000000).toString());
 	let leadingCandidateVoteCount = -1;
 	const candidateEntries = candidates.entries();
 
