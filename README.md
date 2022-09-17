@@ -115,5 +115,3 @@ As you can see in `package.json`, this does two things:
   [CLI]: https://www.w3schools.com/whatis/whatis_cli.asp
   [create-near-app]: https://github.com/nearprotocol/create-near-app
   [gh-pages]: https://github.com/tschaub/gh-pages
-
-Verify Github on Galxe. gid:WPWrZxWZE3rJC38FRwE7dN
